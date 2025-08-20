@@ -31,7 +31,7 @@ public class LivroController {
 			String mensagem = this.livroService.save(livro);
 			return new ResponseEntity<>(mensagem, HttpStatus.CREATED);
 		}catch(Exception e) {
-			return new ResponseEntity<>("Erro ao salvar o Livro! Erro: " +e.getMessage(), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Erro ao salvar o Livro! Erro: " + e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -61,7 +61,7 @@ public class LivroController {
 			List<Livro> lista = this.livroService.findAll();
 			return new ResponseEntity<List<Livro>>(lista, HttpStatus.OK);
 		}catch(Exception e) {
-			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<String>("Erro: " + e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
 	

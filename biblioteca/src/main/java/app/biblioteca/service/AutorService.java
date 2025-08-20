@@ -28,6 +28,11 @@ public class AutorService {
 		return "o autor de id: '" +id+ "' foi deletado com sucesso!";
 	}
 	
+	public String deleteByNome(String nome) {
+		this.autorRepository.deleteByNome(nome);
+		return "os autores de nome: '" + nome +"' foram deletados com sucesso!";
+	}
+	
 	public List<Autor> findAll(){
 		List<Autor> lista = this.autorRepository.findAll();
 		return lista;

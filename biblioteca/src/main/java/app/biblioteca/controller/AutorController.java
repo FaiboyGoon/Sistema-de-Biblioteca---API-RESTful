@@ -54,6 +54,15 @@ public class AutorController {
 			return new ResponseEntity<>("Erro ao deletar o Autor! Erro: " + e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
+	@DeleteMapping("/deleteByNome")
+	public ResponseEntity<String> deleteByNome(@RequestParam String nome) {
+		try {
+			String mensagem = this.autorService.deleteByNome(nome);
+			return new ResponseEntity<>(mensagem, HttpStatus.OK);
+		}catch(Exception e) {
+			return new ResponseEntity<>("Erro ao deletar o Autor! Erro: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
 	
 	@GetMapping("/findAll")
 	public ResponseEntity<?> findAll(){
