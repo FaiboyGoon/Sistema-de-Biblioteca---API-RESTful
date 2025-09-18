@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(ReservationFullException.class)
-	public ResponseEntity<String> handle03(ReservationFullException ex) {
+	public ResponseEntity<String> ReservationFullExceptionHandler(ReservationFullException ex) {
 		return new ResponseEntity<String>(ex.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 	
