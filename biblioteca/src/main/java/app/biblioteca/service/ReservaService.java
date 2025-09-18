@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import app.biblioteca.entity.Reserva;
+import app.biblioteca.exception.ReservationFullException;
 import app.biblioteca.repository.ReservaRepository;
 
 @Service
@@ -23,7 +24,7 @@ public class ReservaService {
 			this.reservaRepository.save(reserva);
 			return "A reserva no dia: "+ reserva.getDataReserva() +" foi criada com sucesso!";
 		}else {
-			throw new RuntimeException("O livro já possui muitas reservas, mais reservas não serão possíveis");
+			throw new ReservationFullException("O livro já possui muitas reservas, mais reservas não serão possíveis");
 		}
 	}
 
