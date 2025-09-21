@@ -35,7 +35,7 @@ public class Livro {
 	private String titulo;
 
 	@NotNull(message = "O Autor é obrigatório")
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne/*(cascade = CascadeType.ALL)*/
 	@JsonIgnoreProperties("livros")
 	private Autor autor;
 
@@ -43,7 +43,7 @@ public class Livro {
 	@JsonIgnoreProperties("livro")
 	private List<Reserva> reservas;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany/*(cascade = CascadeType.ALL)*/
 	@JoinTable(name = "livro_genero")
 	@JsonIgnoreProperties("livros")
 	private List<Genero> generos;

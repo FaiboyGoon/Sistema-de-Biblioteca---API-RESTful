@@ -3,6 +3,7 @@ package app.biblioteca.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -51,10 +52,10 @@ public class GeneroController {
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 	}
 	
-	@GetMapping("/findAll")
-	public ResponseEntity<?> findAll(){
-			List<Genero> lista = this.generoService.findAll();
-			return new ResponseEntity<List<Genero>>(lista, HttpStatus.OK);
+	@GetMapping("/findAll/{numPage}/{qtidPorPagina}")
+	public ResponseEntity<Page<Genero>> findAll(@PathVariable("numPage") int numPage, @PathVariable("qtidPorPagina") int qtidPorPagina){
+			Page<Genero> lista = this.generoService.findAll(numPage, qtidPorPagina);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
 	}
 	
 	@GetMapping("/findById/{id}")

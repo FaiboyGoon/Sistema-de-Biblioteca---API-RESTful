@@ -3,6 +3,8 @@ package app.biblioteca.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import app.biblioteca.entity.Genero;
@@ -33,9 +35,9 @@ public class GeneroService {
 		return "os generos de nome: '" + nome +"' foram deletados com sucesso!";
 	}
 	
-	public List<Genero> findAll(){
-		List<Genero> lista = this.generoRepository.findAll();
-		return lista;
+	public Page<Genero> findAll(int numPage, int qtidPorPagina){
+		PageRequest config = PageRequest.of(numPage-1, qtidPorPagina);
+		return this.generoRepository.findAll(config);
 	}
 	
 	public Genero findById(Long id) {

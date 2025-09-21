@@ -64,8 +64,8 @@ public class AutorController {
 	
 	@GetMapping("/findByNome")
 	public ResponseEntity<?> findByNomeContainingIgnoreCase(@RequestParam String nome){
-			Autor autor = this.autorService.findByNomeContainingIgnoreCase(nome);
-			return new ResponseEntity<Autor>(autor, HttpStatus.OK);
+			List<Autor> lista = this.autorService.findByNomeContainingIgnoreCase(nome);
+			return new ResponseEntity<List<Autor>>(lista, HttpStatus.OK);
 	}
 	
 	

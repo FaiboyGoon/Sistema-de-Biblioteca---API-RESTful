@@ -30,7 +30,7 @@ public class Genero {
 	@NotBlank(message = "O nome do gênero é obrigatório")
 	private String nome;
 	
-	@ManyToMany(mappedBy = "generos", cascade = CascadeType.REMOVE)
+	@ManyToMany(mappedBy = "generos" /*cascade = CascadeType.REMOVE*/)
 	@JsonIgnoreProperties("generos")
 	private List<Livro> livros;
 

@@ -43,8 +43,8 @@ public class AutorService {
 		return autor;
 	}
 	
-	public Autor findByNomeContainingIgnoreCase(String nome){
-		Autor autor = this.autorRepository.findByNomeContainingIgnoreCase(nome);
-		return autor;
+	public List<Autor> findByNomeContainingIgnoreCase(String nome){
+		List<Autor> lista = this.autorRepository.findByNomeContainingIgnoreCase(nome);
+		return lista;
 	}
 }

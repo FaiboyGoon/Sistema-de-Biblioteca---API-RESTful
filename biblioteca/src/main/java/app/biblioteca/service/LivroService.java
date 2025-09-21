@@ -17,18 +17,18 @@ public class LivroService {
 	
 	public String save(Livro livro) {
 		this.livroRepository.save(livro);
-		return "o Livro: '"+ livro.getTitulo()+"' do autor: '"+ livro.getAutor().getNome()+"' foi salvo com sucesso!";
+		return "o livro: '"+ livro.getTitulo()+"' do autor: '"+ livro.getAutor().getNome()+"' foi salvo com sucesso!";
 	}
 	
 	public String update(Livro livro, long id) {
 		livro.setId(id);
 		this.livroRepository.save(livro);
-		return "o Livro: '"+ livro.getTitulo()+"' do autor: '"+ livro.getAutor().getNome()+"' foi atualizado com sucesso!";
+		return "o livro: '"+ livro.getTitulo()+"' do autor: '"+ livro.getAutor().getNome()+"' foi atualizado com sucesso!";
 	}
 	
 	public String delete(long id) {
 		this.livroRepository.deleteById(id);
-		return "o Livro de id: '" +id+ "' foi deletado com sucesso!";
+		return "o livro de id: '" +id+ "' foi deletado com sucesso!";
 	}
 	
 	public List<Livro> findAll(){

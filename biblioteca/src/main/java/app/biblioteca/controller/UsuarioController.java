@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.biblioteca.entity.Usuario;
+import app.biblioteca.auth.Usuario;
 import app.biblioteca.service.UsuarioService;
 import jakarta.validation.Valid;
 
@@ -64,7 +64,7 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/findByNome")
-	public ResponseEntity<?> findByNome(@RequestParam String nome){
+	public ResponseEntity<?> findByNome(@RequestParam String nome){	
 			List<Usuario> lista = this.usuarioService.findByNome(nome);
 			return new ResponseEntity<List<Usuario>>(lista, HttpStatus.OK);
 	}

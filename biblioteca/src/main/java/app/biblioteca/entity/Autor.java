@@ -30,7 +30,7 @@ public class Autor {
 	@NotBlank(message = "O nome do autor é obrigatório")
 	private String nome;
 	
-	@OneToMany(mappedBy = "autor", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "autor" /*cascade = CascadeType.ALL*/)
 	@JsonIgnoreProperties("autor")
 	private List<Livro> livros;
 }
