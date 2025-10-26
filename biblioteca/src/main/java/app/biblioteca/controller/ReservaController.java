@@ -31,12 +31,8 @@ public class ReservaController {
 	
 	@PostMapping("/save")
 	public ResponseEntity<String> save(@Valid @RequestBody Reserva reserva) {
-		try {
 			String mensagem = this.reservaService.save(reserva);
 			return new ResponseEntity<>(mensagem, HttpStatus.CREATED);
-		}catch(Exception e) {
-			return new ResponseEntity<>("Erro ao criar a Reserva: " +e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
 	}
 	
 	@PutMapping("/update/{id}")

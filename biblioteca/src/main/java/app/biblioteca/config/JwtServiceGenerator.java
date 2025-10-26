@@ -9,7 +9,7 @@ import java.util.function.Function;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import app.biblioteca.auth.Usuario;
+import app.biblioteca.auth.Usuario;	
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -73,7 +73,7 @@ public class JwtServiceGenerator {
 		return extractClaim(token, Claims::getExpiration);
 	}
 
-	private Key getSigningKey() {
+	protected Key getSigningKey() {
 		byte[] keyBytes = Decoders.BASE64.decode(this.SECRET_KEY);
 		return Keys.hmacShaKeyFor(keyBytes);
 	}
