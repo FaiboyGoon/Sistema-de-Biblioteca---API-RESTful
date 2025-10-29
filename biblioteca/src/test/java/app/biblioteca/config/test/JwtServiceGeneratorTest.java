@@ -8,11 +8,13 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import app.biblioteca.auth.Usuario;
 import app.biblioteca.config.JwtServiceGenerator;
 
+@SpringBootTest
 class JwtServiceGeneratorTest {
 
     JwtServiceGenerator jwtService;
