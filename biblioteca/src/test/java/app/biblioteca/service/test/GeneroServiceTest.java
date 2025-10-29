@@ -13,10 +13,9 @@ import java.util.NoSuchElementException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -25,7 +24,7 @@ import app.biblioteca.entity.Genero;
 import app.biblioteca.repository.GeneroRepository;
 import app.biblioteca.service.GeneroService;
 
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest
 class GeneroServiceTest {
 
     @Mock
