@@ -11,13 +11,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,13 +26,12 @@ import app.biblioteca.auth.LoginService;
 import app.biblioteca.config.JwtAuthenticationFilter;
 import app.biblioteca.config.JwtServiceGenerator;
 
-@ExtendWith(SpringExtension.class)
 @WebMvcTest(LoginController.class)
 @AutoConfigureMockMvc(addFilters = false)
 class LoginControllerTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
     
     @MockitoBean
     JwtServiceGenerator jwtServiceGenerator;
@@ -43,9 +40,9 @@ class LoginControllerTest {
     JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @MockitoBean
-    private LoginService loginService;
+     LoginService loginService;
 
-    private Login login;
+     Login login;
 
     @BeforeEach
     void setup() {
@@ -55,7 +52,7 @@ class LoginControllerTest {
     }
 
     @Test
-    @DisplayName("TESTE DE INTEGRAÇÃO -- POST /api/login retorna token com status 200")
+    @DisplayName("TESTE DE INTEGRAÇÃO -- retorna token com status 200 Ok")
     void testLogar_Success() throws Exception {
         when(loginService.logar(any(Login.class))).thenReturn("TOKEN123");
 
@@ -69,7 +66,7 @@ class LoginControllerTest {
     }
 
     @Test
-    @DisplayName("TESTE DE INTEGRAÇÃO -- POST /api/login lança exception se serviço falha")
+    @DisplayName("TESTE DE INTEGRAÇÃO -- retorna status 400 Bad Request se serviço falha")
     void testLogar_Failure() throws Exception {
         when(loginService.logar(any(Login.class))).thenThrow(new RuntimeException("Usuário não encontrado"));
 
