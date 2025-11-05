@@ -19,7 +19,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class Autor {
 
@@ -33,4 +32,10 @@ public class Autor {
 	@OneToMany(mappedBy = "autor" /*cascade = CascadeType.ALL*/)
 	@JsonIgnoreProperties("autor")
 	private List<Livro> livros;
+
+	public Autor() {
+		super();
+	}
+	
+	
 }

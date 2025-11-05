@@ -16,13 +16,11 @@ import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class Reserva {
 	@Id
@@ -43,5 +41,9 @@ public class Reserva {
 	@ManyToOne
 	@JsonIgnoreProperties("reservas")
 	private Livro livro;
+	
+	public Reserva() {
+		super();
+	}
 
 }

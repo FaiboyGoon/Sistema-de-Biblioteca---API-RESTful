@@ -13,13 +13,11 @@ import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class Genero {
 	
@@ -34,4 +32,9 @@ public class Genero {
 	@JsonIgnoreProperties("generos")
 	private List<Livro> livros;
 
+	public Genero() {
+		super();
+	}
+
+	
 }
