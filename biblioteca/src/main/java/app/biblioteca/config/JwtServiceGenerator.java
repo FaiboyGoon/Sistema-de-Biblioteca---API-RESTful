@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +16,24 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+//import jakarta.annotation.PostConstruct;
 
 @Service
 public class JwtServiceGenerator {  
 
 	//Parâmetros para geração do token
-	public static final String SECRET_KEY = "CHAVESECRETAPROJETOMENSALUNIAMERICAFABRICIOQUINTANA";
+	@Value("${secret.key}")
+	public String SECRET_KEY;
 	public static final SignatureAlgorithm ALGORITMO_ASSINATURA = SignatureAlgorithm.HS256;
 	public static final int HORAS_EXPIRACAO_TOKEN = 1;
+	
+	/*
+	  @PostConstruct
+	public void init() {
+		System.out.println(SECRET_KEY);
+		System.out.println("*");
+	}
+	*/
 
 	public Map<String, Object> gerarPayload(Usuario usuario){
 		
