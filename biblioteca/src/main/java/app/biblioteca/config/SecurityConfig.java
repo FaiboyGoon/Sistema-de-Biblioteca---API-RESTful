@@ -33,6 +33,7 @@ public class SecurityConfig  {
 		.csrf(AbstractHttpConfigurer::disable)
 		.cors(AbstractHttpConfigurer::disable)
 		.authorizeHttpRequests((requests) -> requests
+				.requestMatchers("/api/usuarios/findAll").hasRole("ADMIN")
 				.requestMatchers("/api/login").permitAll()
 				.requestMatchers("/api/usuarios/save").permitAll()
 				.anyRequest().authenticated())
