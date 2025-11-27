@@ -17,8 +17,10 @@ import java.util.NoSuchElementException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import app.biblioteca.entity.Autor;
@@ -28,7 +30,7 @@ import app.biblioteca.entity.Reserva;
 import app.biblioteca.repository.LivroRepository;
 import app.biblioteca.service.LivroService;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 class LivroServiceTest {
 
     @Mock

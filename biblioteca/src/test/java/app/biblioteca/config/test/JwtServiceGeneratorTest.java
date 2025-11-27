@@ -8,13 +8,16 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import app.biblioteca.auth.Usuario;
 import app.biblioteca.config.JwtServiceGenerator;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 class JwtServiceGeneratorTest {
 
     JwtServiceGenerator jwtService;
@@ -24,6 +27,7 @@ class JwtServiceGeneratorTest {
     @BeforeEach
     void setup() {
         jwtService = new JwtServiceGenerator();
+        jwtService.SECRET_KEY = "f8d3bbacbf87c16f707b6c29ef2b1da36f91a03d315f5f0fdc9de4c441a52f89";
 
         usuario = new Usuario();
         usuario.setId(1L);
@@ -114,6 +118,9 @@ class JwtServiceGeneratorTest {
     @DisplayName("TESTE DE INTEGRAÇÃO -- Token expirado deve ser inválido")
     void testIsTokenExpired() {
         JwtServiceGenerator shortExpiryJwt = new JwtServiceGenerator() {
+        	{
+                this.SECRET_KEY = jwtService.SECRET_KEY; // copy key
+            }
             @Override
             public String generateToken(Usuario usuario) {
                 Map<String, Object> payloadData = this.gerarPayload(usuario);

@@ -12,8 +12,10 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -21,7 +23,7 @@ import app.biblioteca.auth.Usuario;
 import app.biblioteca.repository.UsuarioRepository;
 import app.biblioteca.service.UsuarioService;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 class UsuarioServiceTest {
 
     @Mock
