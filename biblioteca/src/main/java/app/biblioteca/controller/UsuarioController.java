@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,36 +34,42 @@ public class UsuarioController {
 			return new ResponseEntity<>(mensagem, HttpStatus.CREATED);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/update/{id}")
 	public ResponseEntity<String> update(@Valid @RequestBody Usuario usuario,@PathVariable long id) {
 			String mensagem = this.usuarioService.update(usuario, id);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/deleteById/{id}")
 	public ResponseEntity<String> delete(@PathVariable long id) {
 			String mensagem = this.usuarioService.delete(id);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/findAll")
 	public ResponseEntity<?> findAll(){
 			List<Usuario> lista = this.usuarioService.findAll();
 			return new ResponseEntity<List<Usuario>>(lista, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/findById/{id}")
 	public ResponseEntity<?> findById(@PathVariable long id){
 			Usuario usuario = this.usuarioService.findById(id);
 			return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/findByEmail")
 	public ResponseEntity<?> findByEmail(@RequestParam String email){
 			Usuario usuario = this.usuarioService.findByEmail(email);
 			return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/findByNome")
 	public ResponseEntity<?> findByNome(@RequestParam String nome){	
 			List<Usuario> lista = this.usuarioService.findByNome(nome);
